@@ -3,7 +3,7 @@ Solution to Riddler Classic @ https://fivethirtyeight.com/features/can-you-survi
 
 In this high-tension game, 16 players must cross, in order, a 18-step glass bridge, guessing at each step which of two glass squares will support their weight without breaking.
 
-Below are the survival probabilities of each player depending on their order number and also the total number of expected survivors, assuming no time limit and no player resorting to tricks. All numbers were calculated as exact fractions with a short program in Scala 2.12.11 using cached recursion on the function e(P, S) := `expected number of survivors given that P players and S steps are left`, exploiting this relationship:
+Below are the survival probabilities of each player depending on their order number and also the total number of expected survivors, assuming no time limit and no player resorting to tricks. All numbers were calculated as exact fractions with a [short program in Scala 2.12.11 using cached recursion](https://github.com/stefperf/SquidGameRiddler/blob/main/SquidGameRiddler.scala) on the function e(P, S) := `expected number of survivors given that P players and S steps are left`, exploiting this relationship:
 
 e(P, S)   =   e(1, S) + Sum e(P-1, s) / 2^(S-s) for s in 0...S-1   =   1/2^S + Sum e(P-1, s) / 2^(S-s) for s in 0...S-1
 
