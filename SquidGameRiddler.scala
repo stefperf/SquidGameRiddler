@@ -4,6 +4,7 @@ package squidgameriddler
 import scala.annotation.tailrec
 
 
+// class for precise calculations on rational numbers
 case class Fraction(n: Long, d: Long) {
   import Fraction.{gcd, mcm}
 
@@ -45,6 +46,7 @@ object Fraction {
 }
 
 
+// object analyzing the survival probabilities in Squid Game's glass bridge game
 object SquidGameRiddler extends App {
   private val computedExpectations = collection.mutable.Map[(Int, Int), Fraction]()
 
