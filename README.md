@@ -7,7 +7,9 @@ Below are the survival probabilities of each player depending on their order num
 
 e(P, S)   =   e(1, S) + Sum e(P-1, s) / 2^(S-s) for s in 0...S-1   =   1/2^S + Sum e(P-1, s) / 2^(S-s) for s in 0...S-1
 
-Even the last player, who is more than 100'000 times likelier to survive than the unlucky first player, still has worse than even chances.
+Even the last player, who is more than 100'000 times likelier to survive than the unlucky first player, still has worse than even chances. The survival probability of each p-th player is calculated simply as e(p, S) - e(p-1, S), exploiting the relationship:
+
+e(P, S)   =   Sum Prob\[ p-th player survives \] for p in 1...P
 
 # Results
 
