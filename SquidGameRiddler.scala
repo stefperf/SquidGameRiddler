@@ -4,7 +4,6 @@ package squidgameriddler
 import scala.annotation.tailrec
 
 
-// class for precise calculations on rational numbers
 case class Fraction(n: Long, d: Long) {
   import Fraction.{gcd, mcm}
 
@@ -46,7 +45,6 @@ object Fraction {
 }
 
 
-// object analyzing the survival probabilities in Squid Game's glass bridge game
 object SquidGameRiddler extends App {
   private val computedExpectations = collection.mutable.Map[(Int, Int), Fraction]()
 
@@ -59,11 +57,13 @@ object SquidGameRiddler extends App {
       var expectedSurvivors = Fraction(0L, 1L)
       var probabilitySituationOccurs = Fraction(1L, 1L)
       for (nGlassSquaresLeftAfterwards <- (nGlassSquaresLeft - 1) to 0 by -1) {
+        // case where the 1st player guesses wrong at the s-th step
         probabilitySituationOccurs *= Fraction(1L, 2L)
         expectedSurvivors +=
           probabilitySituationOccurs * calcExpectedSurvivors(nCompetitorsLeft - 1, nGlassSquaresLeftAfterwards)
       }
-      expectedSurvivors += probabilitySituationOccurs
+      // case where the 1st player guesses all steps correctly
+      expectedSurvivors += probabilitySituationOccurs * Fraction(nCompetitorsLeft.toLong, 1L)
       computedExpectations((nCompetitorsLeft, nGlassSquaresLeft)) = expectedSurvivors
       expectedSurvivors
     }
