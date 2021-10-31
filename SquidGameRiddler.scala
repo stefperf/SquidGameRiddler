@@ -70,6 +70,7 @@ object SquidGameRiddler extends App {
   }
 
   def analyzeGame(nCompetitorsLeft: Int, nGlassSquaresLeft: Int): Unit = {
+    println(s"Playing Squid Game's glass bridge crossing with $nCompetitorsLeft players and $nGlassSquaresLeft steps:")
     val expectedSurvivors = calcExpectedSurvivors(nCompetitorsLeft, nGlassSquaresLeft)
     var prevExpectation = Fraction(0L, 1L)
     for (playerNr <- 1 to nCompetitorsLeft) {
